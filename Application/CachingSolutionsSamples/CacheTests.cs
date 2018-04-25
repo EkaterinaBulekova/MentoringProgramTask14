@@ -114,7 +114,6 @@ namespace CachingSolutionsSamples
 	            if (i == 5)
 	                entityManager.AddItem(supplier);
 	            Console.WriteLine(entityManager.GetEntities().Count());
-	            Thread.Sleep(100);
 	        }
 
         }

@@ -37,7 +37,6 @@ namespace CachingSolutionsSamples.Generic
                         {
                             command.Notification = null;
                             var dependency = new SqlDependency(command);
-                            dependency.OnChange += OnDependencyChange;
                             var monitor = new SqlChangeMonitor(dependency);
                             policy.ChangeMonitors.Add(monitor);
                             _cache.Set(key, entities, policy);
@@ -60,11 +59,5 @@ namespace CachingSolutionsSamples.Generic
         {
             return (IEnumerable<TEntity>)_cache.Get(_prefix + forUser);
         }
-
-
-	    void OnDependencyChange(object sender, SqlNotificationEventArgs e)
-	    {
-	        _cache.Remove(_prefix + _forUser);
-	    }
     }
 }
